@@ -4,7 +4,11 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 
-const slides = [
+type Slide = 
+  | { id: number; type: "collage"; title: string; images: { topL: string; topM: string; botL: string; botM: string; right: string; } }
+  | { id: number; type: "single" | "editorial"; title: string; subtitle: string; image: string; };
+
+const slides: Slide[] = [
   {
     id: 1,
     type: "collage",
