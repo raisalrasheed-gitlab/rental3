@@ -1,26 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #2d241e;
+  --accent: #c19a6b;
+  --accent-dark: #8b5e3c;
+  --secondary-bg: #fdf8f3;
+  --border: #e8e2dd;
+  
+  --font-serif: "Playfair Display", serif;
+  --font-script: "Cormorant Garamond", serif;
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+
+  --header-height: 80px;
+  --announcement-height: 40px;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-accent: var(--accent);
+  --color-accent-dark: var(--accent-dark);
+  --color-secondary-bg: var(--secondary-bg);
+  --color-border: var(--border);
+  
+  --font-serif: var(--font-serif);
+  --font-script: var(--font-script);
+  --font-sans: var(--font-sans);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+  
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif);
+    font-weight: 500;
+  }
+  
+  .script-text {
+    font-family: var(--font-script);
+    font-style: italic;
   }
 }
 
-body {
+@layer components {
+  .btn-outline {
+    border: 1.5px solid var(--accent);
+    color: var(--accent);
+    padding: 0.75rem 1.5rem;
+    transition: all 0.3s ease;
+    background: transparent;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    font-size: 0.875rem;
+  }
+
+  .btn-outline:hover {
+    background: var(--accent);
+    color: white;
+  }
+
+  .btn-solid {
+    background: var(--accent);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    font-size: 0.875rem;
+  }
+
+  .btn-solid:hover {
+    background: var(--accent-dark);
+  }
+  
+  .premium-card {
+    background: white;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .premium-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
   background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 10px;
 }
